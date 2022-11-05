@@ -1,0 +1,3 @@
+[submodule "tsid-core"]
+	path = tsid-core
+	url = git@github.com:kakakoo/tsid-core.git

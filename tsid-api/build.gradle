@@ -1,0 +1,52 @@
+ext{
+    set('springCloudVersion', "2020.0.5")
+
+    dependencyManagement{
+        imports{
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+}
+
+dependencies {
+    implementation project(":tsid-core:tsid-domain")
+    implementation project(":tsid-core:tsid-common")
+    implementation project(":tsid-core:tsid-external")
+    implementation project(":tsid-core:tsid-internal")
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.kafka:spring-kafka'
+
+    //jwt
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+
+    //json
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+
+    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.3.6'
+
+    // swagger
+    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    //elastic-apm
+    implementation 'co.elastic.apm:elastic-apm-agent:1.34.0'
+    implementation 'co.elastic.apm:apm-agent-attach:1.34.0'
+}
+
+test {
+//	useJUnitPlatform()
+    exclude '**/*'
+}

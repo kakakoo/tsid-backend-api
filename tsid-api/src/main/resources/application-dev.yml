@@ -1,0 +1,101 @@
+server:
+  port: 8000
+  name: tsid-dev
+
+---
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: url
+    username: username
+    password: password
+    hikari:
+      maximum-pool-size: 5
+  profiles:
+    active: dev
+    include:
+      - external-dev
+      - internal-dev
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        default_batch_fetch_size: 100
+        dialect: org.hibernate.dialect.MySQL57Dialect
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  data:
+    web:
+      pageable:
+        default-page-size: 10
+        one-indexed-parameters: true
+  config:
+    use-legacy-processing: true
+  main:
+    allow-bean-definition-overriding: true
+
+elastic:
+  apm:
+    server-url: http://apm.tsidcert.com
+    application-package: com.tsid.api
+    service-name: tsid-api
+    environment: develop
+    log-level: ERROR
+    capture-body: all
+
+tsid:
+  sns:
+    url: url
+    auth: auth
+
+callback:
+  di:
+    key: key
+auth:
+  temp:
+    key: key
+
+jwt:
+  secret: secret
+
+danal:
+  cpid: cpid
+  cppwd: cppwd
+  auth:
+    url: url
+  ready:
+    url: url
+  cpcgi:
+    url: url
+  back:
+    url: url
+
+naver:
+  api:
+    access-key: access-key
+    secret-key: secret-key
+
+logging:
+  level:
+    com:
+      amazonaws:
+        util:
+          EC2MetadataUtils: error
+    web:
+      debug
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
+
+rsa:
+  private:
+    key: key
+
